@@ -165,15 +165,15 @@ export default function Portfolio() {
               <h2 className="text-hero mb-12">About Me</h2>
               <div className="space-y-6">
                 <p className="text-body">
-                  I'm a multidisciplinary creative developer passionate about pushing the boundaries of web technology. 
+                  I&apos;m a multidisciplinary creative developer passionate about pushing the boundaries of web technology. 
                   My work exists at the intersection of art, technology, and human experience.
                 </p>
                 <p className="text-body">
-                  With over 5 years in the industry, I've collaborated with startups, agencies, and Fortune 500 companies 
+                  With over 5 years in the industry, I&apos;ve collaborated with startups, agencies, and Fortune 500 companies 
                   to create digital experiences that are not only functional but emotionally resonant.
                 </p>
                 <p className="text-body">
-                  When I'm not coding, you'll find me experimenting with generative art, exploring new creative coding 
+                  When I&apos;m not coding, you&apos;ll find me experimenting with generative art, exploring new creative coding 
                   techniques, or contributing to open-source projects that democratize creative technology.
                 </p>
               </div>
@@ -287,9 +287,9 @@ export default function Portfolio() {
         <div className="asymmetric-grid">
           <div className="grid-span-6">
             <div className="fade-in-up">
-              <h2 className="text-hero mb-8">Let's Create Together</h2>
+              <h2 className="text-hero mb-8">Let&apos;s Create Together</h2>
               <p className="text-large mb-8">
-                I'm always excited to collaborate on innovative projects that push creative boundaries.
+                I&#39;m always excited to collaborate on innovative projects that push creative boundaries.
               </p>
               <div className="space-y-4">
                 <a 
