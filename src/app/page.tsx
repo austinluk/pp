@@ -1,99 +1,78 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const projects = [
   {
     id: 1,
-    title: "thenstep",
-    subtitle: "Progressive Fitness Platform",
-    description: "Revolutionary step-tracking application that gamifies fitness with blockchain integration. Built with React Native and advanced analytics.",
+    title: "Neural Interface",
+    subtitle: "AI-Driven UX",
+    description: "Revolutionary interface design using machine learning to predict user intentions. Features adaptive layouts and predictive navigation patterns.",
     year: "2024",
-    tags: ["React Native", "Blockchain", "Analytics", "Fitness"],
-    link: "https://thenstep.app/"
+    tags: ["AI", "UX", "React", "Python"]
   },
   {
     id: 2,
-    title: "Neural Canvas",
-    subtitle: "AI Art Generator",
-    description: "Machine learning model that creates abstract digital art based on user emotions and biometric data.",
+    title: "Quantum Gallery",
+    subtitle: "Digital Art Platform",
+    description: "Immersive 3D gallery space for digital artists. Built with WebGL and advanced physics simulations for realistic artwork interactions.",
     year: "2024",
-    tags: ["Python", "TensorFlow", "Computer Vision", "Art"]
+    tags: ["WebGL", "Three.js", "GLSL", "Physics"]
   },
   {
     id: 3,
-    title: "Quantum Sort",
-    subtitle: "Algorithm Visualizer",
-    description: "Interactive visualization tool for quantum-inspired sorting algorithms with real-time performance metrics.",
+    title: "Minimalist Banking",
+    subtitle: "FinTech Mobile App",
+    description: "Clean, accessible banking application focusing on financial wellness and mindful spending through behavioral design patterns.",
     year: "2023",
-    tags: ["TypeScript", "Three.js", "Algorithms", "Visualization"]
+    tags: ["React Native", "FinTech", "UX", "Security"]
   },
   {
     id: 4,
-    title: "Code Fractal",
-    subtitle: "Development Tool",
-    description: "Visual code analysis tool that maps software architecture as interactive fractal patterns.",
+    title: "Sonic Landscapes",
+    subtitle: "Audio Visualization",
+    description: "Real-time audio visualization tool that converts sound into dynamic, generative art. Used by musicians for live performances.",
     year: "2023",
-    tags: ["Node.js", "D3.js", "AST", "DevTools"]
+    tags: ["Web Audio", "Canvas", "Generative", "Performance"]
   }
 ];
 
 const experiences = [
   {
-    role: "Computer Science Student",
-    company: "University of British Columbia",
-    period: "2022 - Present",
-    description: "Studying algorithms, data structures, machine learning, and software engineering. Focus on creative computing and human-computer interaction.",
-    tech: ["Python", "Java", "C++", "Mathematics", "AI/ML"]
+    role: "Senior Creative Developer",
+    company: "Ethereal Studios",
+    period: "2023 - Present",
+    description: "Leading innovative web experiences for luxury brands. Specializing in performance optimization and creative coding.",
+    technologies: ["React", "Three.js", "GSAP", "WebGL"]
+  },
+  {
+    role: "UI/UX Designer",
+    company: "Quantum Design Co.",
+    period: "2022 - 2023",
+    description: "Designed digital products for startups and enterprise clients. Focus on accessibility and user-centered design principles.",
+    technologies: ["Figma", "Protopie", "Design Systems", "Research"]
   },
   {
     role: "Frontend Developer",
-    company: "Tech Startup",
-    period: "2023 - Present",
-    description: "Building responsive web applications with modern frameworks. Specializing in performance optimization and user experience.",
-    tech: ["React", "TypeScript", "Next.js", "Tailwind"]
-  },
-  {
-    role: "Open Source Contributor",
-    company: "Various Projects",
-    period: "2022 - Present",
-    description: "Contributing to open source projects in web development, data visualization, and creative coding communities.",
-    tech: ["Git", "JavaScript", "Python", "Documentation"]
+    company: "Pixel Perfect Inc.",
+    period: "2021 - 2022",
+    description: "Built responsive web applications with emphasis on performance and modern development practices.",
+    technologies: ["Vue.js", "TypeScript", "Tailwind", "Node.js"]
   }
 ];
 
-export default function AustinPortfolio() {
-  const [theme, setTheme] = useState<'void' | 'invert'>('void');
+export default function Portfolio() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [activeSection, setActiveSection] = useState('hero');
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [trails, setTrails] = useState<Array<{ x: number; y: number; id: number }>>([]);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const trailIdRef = useRef(0);
 
-  // Custom cursor tracking
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-      
-      // Add trail
-      const newTrail = { x: e.clientX, y: e.clientY, id: trailIdRef.current++ };
-      setTrails(prev => [...prev.slice(-8), newTrail]);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Theme system
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  // Section observer
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-40% 0px -60% 0px',
+      rootMargin: '-50% 0px -50% 0px',
       threshold: 0
     };
 
@@ -115,7 +94,7 @@ export default function AustinPortfolio() {
   }, []);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'void' ? 'invert' : 'void');
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -124,220 +103,177 @@ export default function AustinPortfolio() {
     });
   };
 
-  const splitText = (text: string) => {
-    return text.split('').map((char, index) => (
-      <span key={index} className="text-fragment" style={{ animationDelay: `${index * 0.05}s` }}>
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ));
-  };
-
-  // Generate chaos grid
-  const generateChaosGrid = () => {
-    return Array.from({ length: 256 }, (_, i) => (
-      <div key={i} className="cell" />
-    ));
-  };
-
   return (
     <main className="relative">
-      {/* Custom Cursor */}
-      <div 
-        ref={cursorRef}
-        className="cursor"
-        style={{ 
-          left: cursorPos.x - 10, 
-          top: cursorPos.y - 10 
-        }}
-      />
-      
-      {/* Cursor Trails */}
-      {trails.map((trail, index) => (
-        <div
-          key={trail.id}
-          className="cursor-trail"
-          style={{
-            left: trail.x - 2,
-            top: trail.y - 2,
-            opacity: (index + 1) / trails.length * 0.6
-          }}
-        />
-      ))}
-
-      {/* Chaos Grid Background */}
-      <div className="chaos-grid fixed inset-0 z-0">
-        {generateChaosGrid()}
-      </div>
-
-      {/* Theme Disruptor */}
+      {/* Theme Toggle */}
       <button 
-        className="theme-disruptor"
+        className="theme-toggle"
         onClick={toggleTheme}
-      >
-        {theme === 'void' ? 'INVERT' : 'REVERT'}
-      </button>
+        aria-label="Toggle theme"
+      />
 
-      {/* Navigation Fragments */}
-      <nav className="nav-void">
+      {/* Floating Navigation */}
+      <nav className="floating-nav">
         {['hero', 'about', 'projects', 'experience', 'contact'].map((section) => (
           <button
             key={section}
-            className={`nav-fragment ${activeSection === section ? 'active' : ''}`}
+            className={`nav-dot ${activeSection === section ? 'active' : ''}`}
+            data-section={section.charAt(0).toUpperCase() + section.slice(1)}
             onClick={() => scrollToSection(section)}
             aria-label={`Navigate to ${section}`}
           />
         ))}
       </nav>
 
-      {/* Hero Void */}
-      <section id="hero" className="section-void">
-        <div className="content-void flex items-center justify-center">
-          <div className="max-w-6xl w-full">
-            <div className="mb-8 scatter-reveal-active">
-              <h1 className="text-shatter select-none">
-                {splitText('Austin')}
+      {/* Hero Section */}
+      <section id="hero" className="section section-hero">
+        <div className="asymmetric-grid">
+          <div className="grid-span-8">
+            <div className="fade-in-up">
+              <h1 className="text-display mb-8">
+                Alex
                 <br />
-                {splitText('Luk')}
+                Morgan
               </h1>
             </div>
-            <div className="mb-6 scatter-reveal-active" style={{ animationDelay: '0.5s' }}>
-              <h2 className="text-scatter opacity-80">
-                {splitText('CS @ UBC')}
-              </h2>
-            </div>
-            <div className="mb-12 scatter-reveal-active" style={{ animationDelay: '1s' }}>
-              <p className="text-whisper max-w-2xl">
-                Exploring the intersection of computation, creativity, and human experience. 
-                Building digital experiences that challenge conventional boundaries.
+            <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <p className="text-large max-w-2xl">
+                Creative Developer & Digital Artist crafting unique experiences at the intersection of technology and design.
               </p>
             </div>
-            <div className="scatter-reveal-active" style={{ animationDelay: '1.5s' }}>
-              <div className="code-void max-w-md" data-lang="js">
-                const austin = &#123;<br />
-                &nbsp;&nbsp;role: 'Student & Developer',<br />
-                &nbsp;&nbsp;university: 'UBC',<br />
-                &nbsp;&nbsp;interests: ['AI', 'Creative Coding', 'HCI'],<br />
-                &nbsp;&nbsp;currentProject: 'thenstep.app'<br />
-                &#125;;
+          </div>
+          <div className="grid-span-4">
+            <div className="slide-in-right" style={{ animationDelay: '0.4s' }}>
+              <div className="geometric-shape shape-circle w-64 h-64 morph-border" />
+              <div className="geometric-shape shape-square w-32 h-32 absolute top-20 right-20" 
+                   style={{ animationDelay: '2s' }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="section section-about">
+        <div className="asymmetric-grid">
+          <div className="grid-span-2">
+            <div className="scale-in">
+              <div className="geometric-shape shape-triangle w-16 h-16 border-l-16 border-r-16 border-b-16 border-l-transparent border-r-transparent border-b-current" />
+            </div>
+          </div>
+          <div className="grid-span-6">
+            <div className="fade-in-up">
+              <h2 className="text-hero mb-12">About Me</h2>
+              <div className="space-y-6">
+                <p className="text-body">
+                  I'm a multidisciplinary creative developer passionate about pushing the boundaries of web technology. 
+                  My work exists at the intersection of art, technology, and human experience.
+                </p>
+                <p className="text-body">
+                  With over 5 years in the industry, I've collaborated with startups, agencies, and Fortune 500 companies 
+                  to create digital experiences that are not only functional but emotionally resonant.
+                </p>
+                <p className="text-body">
+                  When I'm not coding, you'll find me experimenting with generative art, exploring new creative coding 
+                  techniques, or contributing to open-source projects that democratize creative technology.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="grid-span-4">
+            <div className="slide-in-right">
+              <div className="text-small space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-2">Core Skills</h3>
+                  <p>React, TypeScript, WebGL, Three.js, GSAP, Node.js, Python, Creative Coding</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Design Tools</h3>
+                  <p>Figma, Adobe Creative Suite, Blender, TouchDesigner, Processing</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Interests</h3>
+                  <p>Generative Art, AI/ML, Creative Technology, Digital Installation, Performance</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Floating Matter */}
-        <div className="floating-matter matter-1 matter-drift-active" />
-        <div className="floating-matter matter-2 matter-drift-active" style={{ animationDelay: '2s' }} />
-        <div className="floating-matter matter-3 matter-drift-active" style={{ animationDelay: '4s' }} />
-        <div className="floating-matter matter-4 matter-drift-active" style={{ animationDelay: '6s' }} />
       </section>
 
-      {/* About Void */}
-      <section id="about" className="section-void">
-        <div className="content-void">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-              <div className="lg:col-span-2">
-                <h2 className="text-scatter mb-12 chaos-hover">
-                  {splitText('About')}
-                </h2>
-                <div className="space-y-8">
-                  <div className="scatter-reveal-active">
-                    <p className="text-whisper">
-                      I'm a Computer Science student at the University of British Columbia, 
-                      passionate about creating technology that bridges the gap between 
-                      human creativity and computational power.
-                    </p>
+      {/* Projects Section */}
+      <section id="projects" className="section section-projects">
+        <div className="asymmetric-grid">
+          <div className="grid-span-12">
+            <div className="fade-in-up mb-16">
+              <h2 className="text-hero">Selected Work</h2>
+            </div>
+          </div>
+          
+          {projects.map((project, index) => (
+            <div 
+              key={project.id} 
+              className={`${index % 2 === 0 ? 'grid-span-7' : 'grid-span-5'} ${index % 2 === 1 ? 'col-start-8' : ''}`}
+            >
+              <div className="project-card hover-lift">
+                <div className="project-image">
+                  {project.title}
+                </div>
+                <div className="project-content">
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-large font-semibold">{project.title}</h3>
+                      <p className="text-small opacity-75">{project.subtitle}</p>
+                    </div>
+                    <span className="text-small">{project.year}</span>
                   </div>
-                  <div className="scatter-reveal-active" style={{ animationDelay: '0.3s' }}>
-                    <p className="text-whisper">
-                      My work spans from mobile applications to machine learning projects, 
-                      always with a focus on user experience and innovative problem-solving. 
-                      I believe in technology that feels magical yet remains accessible.
-                    </p>
-                  </div>
-                  <div className="scatter-reveal-active" style={{ animationDelay: '0.6s' }}>
-                    <p className="text-whisper">
-                      Currently exploring the frontiers of creative coding, human-computer 
-                      interaction, and the potential of AI to augment human creativity 
-                      rather than replace it.
-                    </p>
+                  <p className="text-small mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span 
+                        key={tag}
+                        className="text-small px-2 py-1 border border-current"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-              
-              <div className="space-y-8">
-                <div className="scatter-reveal-active" style={{ animationDelay: '0.9s' }}>
-                  <h3 className="text-whisper font-semibold mb-4">Core Technologies</h3>
-                  <div className="space-y-2">
-                    {['Python', 'JavaScript/TypeScript', 'React/React Native', 'Node.js', 'Machine Learning', 'Computer Graphics'].map((tech, index) => (
-                      <div key={tech} className="text-pulse void-hover px-3 py-1 inline-block mr-2 mb-2" style={{ animationDelay: `${1.2 + index * 0.1}s` }}>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="section section-experience">
+        <div className="asymmetric-grid">
+          <div className="grid-span-4">
+            <div className="fade-in-up">
+              <h2 className="text-hero mb-8">Experience</h2>
+              <div className="geometric-shape shape-circle w-32 h-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10" />
+            </div>
+          </div>
+          <div className="grid-span-8">
+            <div className="space-y-8">
+              {experiences.map((exp, index) => (
+                <div key={index} className="slide-in-right hover-lift p-6 border border-current" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-large font-semibold">{exp.role}</h3>
+                      <p className="text-body">{exp.company}</p>
+                    </div>
+                    <span className="text-small">{exp.period}</span>
+                  </div>
+                  <p className="text-small mb-4">{exp.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech) => (
+                      <span 
+                        key={tech}
+                        className="text-small px-2 py-1 bg-current text-background"
+                      >
                         {tech}
-                      </div>
+                      </span>
                     ))}
-                  </div>
-                </div>
-                
-                <div className="scatter-reveal-active" style={{ animationDelay: '1.8s' }}>
-                  <h3 className="text-whisper font-semibold mb-4">Current Focus</h3>
-                  <div className="space-y-2">
-                    {['Creative Computing', 'Human-Computer Interaction', 'AI/ML Applications', 'Mobile Development'].map((focus, index) => (
-                      <div key={focus} className="text-pulse matter-hover px-3 py-1 inline-block mr-2 mb-2" style={{ animationDelay: `${2.1 + index * 0.1}s` }}>
-                        {focus}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Void */}
-      <section id="projects" className="section-void">
-        <div className="content-void">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-scatter mb-16 chaos-hover">
-              {splitText('Selected Works')}
-            </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {projects.map((project, index) => (
-                <div 
-                  key={project.id} 
-                  className="project-void scatter-reveal-active"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div className="project-content">
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <h3 className="text-scatter text-2xl font-light mb-2">
-                          {project.link ? (
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="chaos-hover">
-                              {project.title}
-                            </a>
-                          ) : (
-                            <span className="chaos-hover">{project.title}</span>
-                          )}
-                        </h3>
-                        <p className="text-pulse">{project.subtitle}</p>
-                      </div>
-                      <span className="text-pulse">{project.year}</span>
-                    </div>
-                    
-                    <div className="project-emerge">
-                      <p className="text-whisper mb-6">{project.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span 
-                            key={tag}
-                            className="text-pulse px-3 py-1 border border-current void-hover"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}
@@ -346,115 +282,47 @@ export default function AustinPortfolio() {
         </div>
       </section>
 
-      {/* Experience Void */}
-      <section id="experience" className="section-void">
-        <div className="content-void">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
-              <div className="lg:col-span-2">
-                <h2 className="text-scatter mb-8 chaos-hover">
-                  {splitText('Experience')}
-                </h2>
-                <div className="floating-matter matter-3 void-pulse-active" />
-              </div>
-              
-              <div className="lg:col-span-3 space-y-12">
-                {experiences.map((exp, index) => (
-                  <div 
-                    key={index} 
-                    className="matter-hover p-8 border border-current scatter-reveal-active"
-                    style={{ animationDelay: `${index * 0.3}s` }}
-                  >
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <h3 className="text-scatter text-xl font-light">{exp.role}</h3>
-                        <p className="text-whisper">{exp.company}</p>
-                      </div>
-                      <span className="text-pulse">{exp.period}</span>
-                    </div>
-                    
-                    <p className="text-whisper mb-6">{exp.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tech.map((tech) => (
-                        <span 
-                          key={tech}
-                          className="text-pulse px-3 py-1 bg-current mix-blend-difference"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Void */}
-      <section id="contact" className="section-void">
-        <div className="content-void flex items-center justify-center">
-          <div className="max-w-4xl w-full text-center">
-            <h2 className="text-scatter mb-12 chaos-hover">
-              {splitText('Connect')}
-            </h2>
-            
-            <p className="text-whisper mb-16 max-w-2xl mx-auto">
-              Interested in collaborating on innovative projects or discussing the future of technology? 
-              Let's create something extraordinary together.
-            </p>
-            
-            <div className="space-y-6">
-              <div className="scatter-reveal-active">
+      {/* Contact Section */}
+      <section id="contact" className="section section-contact">
+        <div className="asymmetric-grid">
+          <div className="grid-span-6">
+            <div className="fade-in-up">
+              <h2 className="text-hero mb-8">Let's Create Together</h2>
+              <p className="text-large mb-8">
+                I'm always excited to collaborate on innovative projects that push creative boundaries.
+              </p>
+              <div className="space-y-4">
                 <a 
-                  href="mailto:austin.luk@student.ubc.ca" 
-                  className="contact-void"
+                  href="mailto:hello@alexmorgan.dev" 
+                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                 >
-                  austin.luk@student.ubc.ca
+                  hello@alexmorgan.dev
                 </a>
-              </div>
-              
-              <div className="scatter-reveal-active" style={{ animationDelay: '0.3s' }}>
+                <br />
                 <a 
-                  href="https://linkedin.com/in/austinluk" 
-                  className="contact-void"
+                  href="https://linkedin.com/in/alexmorgan" 
+                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
                 </a>
-              </div>
-              
-              <div className="scatter-reveal-active" style={{ animationDelay: '0.6s' }}>
+                <br />
                 <a 
-                  href="https://github.com/austinluk" 
-                  className="contact-void"
+                  href="https://github.com/alexmorgan" 
+                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
                 </a>
               </div>
-              
-              <div className="scatter-reveal-active" style={{ animationDelay: '0.9s' }}>
-                <a 
-                  href="https://thenstep.app" 
-                  className="contact-void"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  thenstep.app
-                </a>
-              </div>
             </div>
-            
-            <div className="mt-20 scatter-reveal-active" style={{ animationDelay: '1.2s' }}>
-              <div className="code-void max-w-md mx-auto" data-lang="terminal">
-                {'>'}  Building the future, one commit at a time...<br />
-                {'>'}  Currently accepting new challenges<br />
-                {'>'}  Status: Ready to innovate ⚡
+          </div>
+          <div className="grid-span-6">
+            <div className="scale-in flex items-center justify-center h-full">
+              <div className="geometric-shape shape-square w-64 h-64 morph-border relative">
+                <div className="geometric-shape shape-circle w-32 h-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
               </div>
             </div>
           </div>
