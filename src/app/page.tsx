@@ -5,59 +5,51 @@ import { useEffect, useState } from 'react';
 const projects = [
   {
     id: 1,
-    title: "Neural Interface",
-    subtitle: "AI-Driven UX",
-    description: "Revolutionary interface design using machine learning to predict user intentions. Features adaptive layouts and predictive navigation patterns.",
+    title: "ThenStep",
+    subtitle: "AI-Powered Platform",
+    description: "An AI-powered platform that intuitively understands user needs — from safe paths to smart meals — without asking twice. ThenStep finds what fits with AI's help.",
     year: "2024",
-    tags: ["AI", "UX", "React", "Python"]
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "Supabase"]
   },
   {
     id: 2,
-    title: "Quantum Gallery",
-    subtitle: "Digital Art Platform",
-    description: "Immersive 3D gallery space for digital artists. Built with WebGL and advanced physics simulations for realistic artwork interactions.",
+    title: "Freddy the Freelancer",
+    subtitle: "WhatsApp Automation Bot",
+    description: "A WhatsApp bot that seamlessly connects clients with skilled freelancers, streamlining the hiring process through automated conversations and smart matching.",
     year: "2024",
-    tags: ["WebGL", "Three.js", "GLSL", "Physics"]
+    tags: ["Node.js", "WhatsApp API", "MongoDB", "AWS"]
   },
   {
     id: 3,
-    title: "Minimalist Banking",
-    subtitle: "FinTech Mobile App",
-    description: "Clean, accessible banking application focusing on financial wellness and mindful spending through behavioral design patterns.",
-    year: "2023",
-    tags: ["React Native", "FinTech", "UX", "Security"]
-  },
-  {
-    id: 4,
-    title: "Sonic Landscapes",
-    subtitle: "Audio Visualization",
-    description: "Real-time audio visualization tool that converts sound into dynamic, generative art. Used by musicians for live performances.",
-    year: "2023",
-    tags: ["Web Audio", "Canvas", "Generative", "Performance"]
+    title: "Portfolio Website",
+    subtitle: "Personal Showcase",
+    description: "Modern portfolio website showcasing projects and skills with responsive design and smooth animations.",
+    year: "2024",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"]
   }
 ];
 
 const experiences = [
   {
-    role: "Senior Creative Developer",
-    company: "Ethereal Studios",
-    period: "2023 - Present",
-    description: "Leading innovative web experiences for luxury brands. Specializing in performance optimization and creative coding.",
-    technologies: ["React", "Three.js", "GSAP", "WebGL"]
+    role: "Computer Science Student",
+    company: "University of British Columbia",
+    period: "2022 - Present",
+    description: "Pursuing B.Sc. in Computer Science with focus on Full-Stack Development, AI/ML, and Human-Computer Interaction. Active in coding projects and tech community.",
+    technologies: ["JavaScript", "Python", "Java", "React", "Node.js"]
   },
   {
-    role: "UI/UX Designer",
-    company: "Quantum Design Co.",
-    period: "2022 - 2023",
-    description: "Designed digital products for startups and enterprise clients. Focus on accessibility and user-centered design principles.",
-    technologies: ["Figma", "Protopie", "Design Systems", "Research"]
+    role: "Full-Stack Developer",
+    company: "ThenStep (Personal Project)",
+    period: "2024",
+    description: "Developed AI-powered platform with natural language processing for intuitive user queries and context-aware recommendations.",
+    technologies: ["Next.js", "TypeScript", "OpenAI API", "Supabase"]
   },
   {
-    role: "Frontend Developer",
-    company: "Pixel Perfect Inc.",
-    period: "2021 - 2022",
-    description: "Built responsive web applications with emphasis on performance and modern development practices.",
-    technologies: ["Vue.js", "TypeScript", "Tailwind", "Node.js"]
+    role: "Backend Developer",
+    company: "Freddy the Freelancer",
+    period: "2024",
+    description: "Built WhatsApp automation bot for connecting clients with freelancers, featuring automated matching and in-chat project scoping.",
+    technologies: ["Node.js", "WhatsApp API", "MongoDB", "AWS"]
   }
 ];
 
@@ -131,14 +123,14 @@ export default function Portfolio() {
           <div className="grid-span-8">
             <div className="fade-in-up">
               <h1 className="text-display mb-8">
-                Alex
+                Austin
                 <br />
-                Morgan
+                Luk
               </h1>
             </div>
             <div className="fade-in-up" style={{ animationDelay: '0.2s' }}>
               <p className="text-large max-w-2xl">
-                Creative Developer & Digital Artist crafting unique experiences at the intersection of technology and design.
+                Computer Science Student & Full-Stack Developer crafting innovative solutions at the intersection of AI and human experience.
               </p>
             </div>
           </div>
@@ -165,16 +157,16 @@ export default function Portfolio() {
               <h2 className="text-hero mb-12">About Me</h2>
               <div className="space-y-6">
                 <p className="text-body">
-                  I&apos;m a multidisciplinary creative developer passionate about pushing the boundaries of web technology. 
-                  My work exists at the intersection of art, technology, and human experience.
+                  I&apos;m a passionate Computer Science student at the University of British Columbia with a keen interest in building impactful technology solutions. 
+                  My work focuses on creating seamless user experiences through innovative applications.
                 </p>
                 <p className="text-body">
-                  With over 5 years in the industry, I&apos;ve collaborated with startups, agencies, and Fortune 500 companies 
-                  to create digital experiences that are not only functional but emotionally resonant.
+                  Specialized in full-stack development with experience in AI/ML integration and human-computer interaction. 
+                  I&apos;m constantly exploring new technologies and frameworks to enhance development workflow and create scalable, maintainable code.
                 </p>
                 <p className="text-body">
-                  When I&apos;m not coding, you&apos;ll find me experimenting with generative art, exploring new creative coding 
-                  techniques, or contributing to open-source projects that democratize creative technology.
+                  Based in Vancouver, BC, I&apos;m always excited to collaborate on projects that push technological boundaries 
+                  and solve real-world problems through code.
                 </p>
               </div>
             </div>
@@ -184,15 +176,15 @@ export default function Portfolio() {
               <div className="text-small space-y-4">
                 <div>
                   <h3 className="font-semibold mb-2">Core Skills</h3>
-                  <p>React, TypeScript, WebGL, Three.js, GSAP, Node.js, Python, Creative Coding</p>
+                  <p>JavaScript/TypeScript, Python, Java, C++, React, Next.js, Node.js</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Design Tools</h3>
-                  <p>Figma, Adobe Creative Suite, Blender, TouchDesigner, Processing</p>
+                  <h3 className="font-semibold mb-2">Technologies</h3>
+                  <p>PostgreSQL, MongoDB, Firebase, Docker, AWS, Vercel, Git</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Interests</h3>
-                  <p>Generative Art, AI/ML, Creative Technology, Digital Installation, Performance</p>
+                  <h3 className="font-semibold mb-2">Focus Areas</h3>
+                  <p>Full-Stack Development, AI/ML, Human-Computer Interaction</p>
                 </div>
               </div>
             </div>
@@ -287,20 +279,20 @@ export default function Portfolio() {
         <div className="asymmetric-grid">
           <div className="grid-span-6">
             <div className="fade-in-up">
-              <h2 className="text-hero mb-8">Let&apos;s Create Together</h2>
+              <h2 className="text-hero mb-8">Let&apos;s Connect</h2>
               <p className="text-large mb-8">
-                I&#39;m always excited to collaborate on innovative projects that push creative boundaries.
+                I&apos;m always excited to collaborate on innovative projects and explore new opportunities in tech.
               </p>
               <div className="space-y-4">
                 <a 
-                  href="mailto:hello@alexmorgan.dev" 
+                  href="mailto:austin.luk@student.ubc.ca" 
                   className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                 >
-                  hello@alexmorgan.dev
+                  austin.luk@student.ubc.ca
                 </a>
                 <br />
                 <a 
-                  href="https://linkedin.com/in/alexmorgan" 
+                  href="https://linkedin.com/in/austinluk" 
                   className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -309,7 +301,7 @@ export default function Portfolio() {
                 </a>
                 <br />
                 <a 
-                  href="https://github.com/alexmorgan" 
+                  href="https://github.com/austinluk" 
                   className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
                   target="_blank"
                   rel="noopener noreferrer"
