@@ -106,7 +106,7 @@ export default function Portfolio() {
 
       {/* Floating Navigation */}
       <nav className="floating-nav">
-        {['hero', 'about', 'projects', 'experience', 'contact'].map((section) => (
+        {['hero', 'about', 'projects', 'experience'].map((section) => (
           <button
             key={section}
             className={`nav-dot ${activeSection === section ? 'active' : ''}`}
@@ -261,84 +261,6 @@ export default function Portfolio() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="section section-contact">
-        <div className="asymmetric-grid items-center">
-          <div className="grid-span-7">
-            <div className="fade-in-up">
-              <h2 className="text-hero mb-6">Let&apos;s Connect</h2>
-              <p className="text-large mb-8 max-w-2xl">
-                I&apos;m always excited to collaborate on innovative projects and explore new opportunities in tech. 
-                Feel free to reach out through any of these channels.
-              </p>
-              
-              <div className="space-y-6 max-w-lg">
-                <a 
-                  href="mailto:austin.luk@student.ubc.ca" 
-                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
-                >
-                  <div className="contact-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs uppercase tracking-wider text-secondary">Email me at</div>
-                    <div>austin.luk@student.ubc.ca</div>
-                  </div>
-                </a>
-
-                <a 
-                  href="https://linkedin.com/in/austinluk" 
-                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="contact-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs uppercase tracking-wider text-secondary">Connect on</div>
-                    <div>LinkedIn</div>
-                  </div>
-                </a>
-
-                <a 
-                  href="https://github.com/austinluk" 
-                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="contact-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <div className="text-xs uppercase tracking-wider text-secondary">View my work on</div>
-                    <div>GitHub</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="grid-span-5">
-            <div className="scale-in flex items-center justify-center h-full">
-              <div className="relative w-full max-w-md">
-                <div className="geometric-shape shape-square w-full aspect-square morph-border relative">
-                  <div className="geometric-shape shape-circle w-1/2 aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                </div>
-              </div>
             </div>
           </div>
         </div>
