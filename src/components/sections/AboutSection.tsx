@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const AboutSection = () => {
   return (
@@ -14,16 +14,21 @@ const AboutSection = () => {
             <h2 className="text-hero mb-12">About Me</h2>
             <div className="space-y-6">
               <p className="text-body">
-                I'm a passionate Computer Science student at the University of British Columbia with a keen interest in building impactful technology solutions. 
-                My work focuses on creating seamless user experiences through innovative applications.
+                I&#39;m a passionate Computer Science student at the University
+                of British Columbia with a keen interest in building impactful
+                technology solutions. My work focuses on creating seamless user
+                experiences through innovative applications.
               </p>
               <p className="text-body">
-                Specialized in full-stack development with experience in AI/ML integration and human-computer interaction. 
-                I'm constantly exploring new technologies and frameworks to enhance development workflow and create scalable, maintainable code.
+                Specialized in full-stack development with experience in AI/ML
+                integration and human-computer interaction. I&#39;m constantly
+                exploring new technologies and frameworks to enhance development
+                workflow and create scalable, maintainable code.
               </p>
               <p className="text-body">
-                Based in Vancouver, BC, I'm always excited to collaborate on projects that push technological boundaries 
-                and solve real-world problems through code.
+                Based in Vancouver, BC, I&#39;m always excited to collaborate on
+                projects that push technological boundaries and solve real-world
+                problems through code.
               </p>
             </div>
           </div>
@@ -33,7 +38,10 @@ const AboutSection = () => {
             <div className="text-small space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">Core Skills</h3>
-                <p>JavaScript/TypeScript, Python, Java, C++, React, Next.js, Node.js</p>
+                <p>
+                  JavaScript/TypeScript, Python, Java, C++, React, Next.js,
+                  Node.js
+                </p>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Technologies</h3>
