@@ -204,27 +204,22 @@ export default function Portfolio() {
           {projects.map((project, index) => (
             <div 
               key={project.id} 
-              className={`${index % 2 === 0 ? 'grid-span-7' : 'grid-span-5'} ${index % 2 === 1 ? 'col-start-8' : ''}`}
+              className={`${index % 2 === 0 ? 'grid-span-7' : 'grid-span-5'} ${index % 2 === 1 ? 'col-start-8' : ''} mb-8`}
             >
-              <div className="project-card hover-lift">
+              <div className="project-card h-full">
                 <div className="project-image">
                   {project.title}
                 </div>
                 <div className="project-content">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-large font-semibold">{project.title}</h3>
-                      <p className="text-small opacity-75">{project.subtitle}</p>
-                    </div>
-                    <span className="text-small">{project.year}</span>
+                  <div className="flex justify-between items-start">
+                    <h3>{project.title}</h3>
+                    <span className="text-small text-secondary">{project.year}</span>
                   </div>
-                  <p className="text-small mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <p className="text-small text-secondary mb-2">{project.subtitle}</p>
+                  <p className="text-body">{project.description}</p>
+                  <div className="tags">
                     {project.tags.map((tag) => (
-                      <span 
-                        key={tag}
-                        className="text-small px-2 py-1 border border-current"
-                      >
+                      <span key={tag} className="tag">
                         {tag}
                       </span>
                     ))}
@@ -248,21 +243,18 @@ export default function Portfolio() {
           <div className="grid-span-8">
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <div key={index} className="slide-in-right hover-lift p-6 border border-current" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-large font-semibold">{exp.role}</h3>
-                      <p className="text-body">{exp.company}</p>
-                    </div>
-                    <span className="text-small">{exp.period}</span>
-                  </div>
-                  <p className="text-small mb-4">{exp.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                <div 
+                  key={index} 
+                  className="experience-card slide-in-right" 
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <h3>{exp.role}</h3>
+                  <span className="company">{exp.company}</span>
+                  <span className="period">{exp.period}</span>
+                  <p>{exp.description}</p>
+                  <div className="tags">
                     {exp.technologies.map((tech) => (
-                      <span 
-                        key={tech}
-                        className="text-small px-2 py-1 bg-current text-background"
-                      >
+                      <span key={tech} className="tag">
                         {tech}
                       </span>
                     ))}
@@ -276,50 +268,117 @@ export default function Portfolio() {
 
       {/* Contact Section */}
       <section id="contact" className="section section-contact">
-        <div className="asymmetric-grid">
-          <div className="grid-span-6">
+        <div className="asymmetric-grid items-center">
+          <div className="grid-span-7">
             <div className="fade-in-up">
-              <h2 className="text-hero mb-8">Let&apos;s Connect</h2>
-              <p className="text-large mb-8">
-                I&apos;m always excited to collaborate on innovative projects and explore new opportunities in tech.
+              <h2 className="text-hero mb-6">Let&apos;s Connect</h2>
+              <p className="text-large mb-8 max-w-2xl">
+                I&apos;m always excited to collaborate on innovative projects and explore new opportunities in tech. 
+                Feel free to reach out through any of these channels.
               </p>
-              <div className="space-y-4">
+              
+              <div className="space-y-6 max-w-lg">
                 <a 
                   href="mailto:austin.luk@student.ubc.ca" 
-                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
+                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
                 >
-                  austin.luk@student.ubc.ca
+                  <div className="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs uppercase tracking-wider text-secondary">Email me at</div>
+                    <div>austin.luk@student.ubc.ca</div>
+                  </div>
                 </a>
-                <br />
+
                 <a 
                   href="https://linkedin.com/in/austinluk" 
-                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
+                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LinkedIn
+                  <div className="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs uppercase tracking-wider text-secondary">Connect on</div>
+                    <div>LinkedIn</div>
+                  </div>
                 </a>
-                <br />
+
                 <a 
                   href="https://github.com/austinluk" 
-                  className="hover-invert text-body border border-current px-6 py-3 inline-block transition-all"
+                  className="contact-button group flex items-center space-x-4 p-4 border border-current hover:bg-current hover:text-background transition-all duration-300"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  GitHub
+                  <div className="contact-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs uppercase tracking-wider text-secondary">View my work on</div>
+                    <div>GitHub</div>
+                  </div>
                 </a>
               </div>
             </div>
           </div>
-          <div className="grid-span-6">
+          <div className="grid-span-5">
             <div className="scale-in flex items-center justify-center h-full">
-              <div className="geometric-shape shape-square w-64 h-64 morph-border relative">
-                <div className="geometric-shape shape-circle w-32 h-32 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+              <div className="relative w-full max-w-md">
+                <div className="geometric-shape shape-square w-full aspect-square morph-border relative">
+                  <div className="geometric-shape shape-circle w-1/2 aspect-square absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      
+      {/* Footer */}
+      <footer className="site-footer">
+        <div className="footer-content">
+          <div className="footer-logo">Austin Luk</div>
+          <div className="footer-links">
+            <a href="#about" className="footer-link">About</a>
+            <a href="#projects" className="footer-link">Projects</a>
+            <a href="#experience" className="footer-link">Experience</a>
+            <a href="#contact" className="footer-link">Contact</a>
+          </div>
+          <div className="social-links">
+            <a href="https://github.com/austinluk" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/austinluk" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="mailto:austin.luk@student.ubc.ca" className="social-link" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </a>
+          </div>
+          <div className="copyright">
+            &copy; {new Date().getFullYear()} Austin Luk. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
