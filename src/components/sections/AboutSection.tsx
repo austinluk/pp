@@ -14,21 +14,13 @@ const AboutSection = () => {
             <h2 className="text-hero mb-12">About Me</h2>
             <div className="space-y-6">
               <p className="text-body">
-                I&#39;m a passionate Computer Science student at the University
-                of British Columbia with a keen interest in building impactful
-                technology solutions. My work focuses on creating seamless user
-                experiences through innovative applications.
-              </p>
-              <p className="text-body">
-                Specialized in full-stack development with experience in AI/ML
-                integration and human-computer interaction. I&#39;m constantly
-                exploring new technologies and frameworks to enhance development
-                workflow and create scalable, maintainable code.
-              </p>
-              <p className="text-body">
-                Based in Vancouver, BC, I&#39;m always excited to collaborate on
-                projects that push technological boundaries and solve real-world
-                problems through code.
+
+                I&#39;m a Computer Science student at UBC based in Vancouver, BC.
+                My main focus is software development, especially full-stack projects that solve real-world problems.
+                I&#39;ve worked with AI and human-computer interaction, and I enjoy creating clean, scalable code. 
+                I&#39;m always exploring new technologies to improve how we build and use software.
+
+
               </p>
             </div>
           </div>
@@ -39,7 +31,7 @@ const AboutSection = () => {
               <div>
                 <h3 className="font-semibold mb-2">Core Skills</h3>
                 <p>
-                  JavaScript/TypeScript, Python, Java, C++, React, Next.js,
+                  Python, JavaScript/TypeScript, Java, C++, React, Next.js,
                   Node.js
                 </p>
               </div>
@@ -49,7 +41,7 @@ const AboutSection = () => {
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Focus Areas</h3>
-                <p>Full-Stack Development, AI/ML, Human-Computer Interaction</p>
+                <p>Software, AI/ML, Human-Computer Interaction</p>
               </div>
             </div>
           </div>
