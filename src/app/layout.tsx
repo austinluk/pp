@@ -14,14 +14,24 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Austin Luk | CS @ UBC | Creative Developer",
-  description: "Austin Luk - Computer Science student at UBC, creative developer, and digital innovator. Exploring the intersection of technology, design, and human experience.",
-  keywords: ["austin luk", "computer science", "ubc", "developer", "portfolio", "thenstep", "creative coding"],
+  description:
+    "Austin Luk - Computer Science student at UBC, creative developer, and digital innovator. Exploring the intersection of technology, design, and human experience.",
+  keywords: [
+    "austin luk",
+    "computer science",
+    "ubc",
+    "developer",
+    "portfolio",
+    "thenstep",
+    "creative coding",
+  ],
   authors: [{ name: "Austin Luk" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Austin Luk | CS @ UBC | Creative Developer",
-    description: "Computer Science student at UBC, creative developer, and digital innovator",
+    description:
+      "Computer Science student at UBC, creative developer, and digital innovator",
     type: "website",
     url: "https://austinluk.dev",
   },
@@ -35,6 +45,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'dark';
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              })();
+            `,
+          }}
+        />
         <meta name="theme-color" content="#000000" />
         <link rel="icon" href="/favicon.ico" />
       </head>

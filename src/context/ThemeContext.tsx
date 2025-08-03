@@ -1,7 +1,13 @@
-'use client';
+"use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { Theme } from '@/types';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+import { Theme } from "@/types";
 
 type ThemeContextType = {
   theme: Theme;
@@ -11,14 +17,26 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>(() => {
+    // Check if we're on the client side
+    if (typeof window !== "undefined") {
+      // Try to get saved theme from localStorage, default to 'dark'
+      const savedTheme = localStorage.getItem("theme") as Theme;
+      return savedTheme || "dark";
+    }
+    // Server-side default
+    return "dark";
+  });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    // Set the theme attribute immediately
+    document.documentElement.setAttribute("data-theme", theme);
+    // Save theme to localStorage
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
@@ -31,7 +49,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
