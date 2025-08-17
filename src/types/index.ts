@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Project {
   id: number;
   title: string;
@@ -5,6 +7,9 @@ export interface Project {
   description: string;
   year: string;
   tags: string[];
+  liveUrl?: string;
+  demoUrl?: string;
+  githubUrl?: string;
 }
 
 export interface Experience {
@@ -18,7 +23,7 @@ export interface Experience {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   ariaLabel: string;
 }
 
